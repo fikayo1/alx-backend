@@ -5,6 +5,7 @@ import csv
 import math
 from typing import List
 
+
 def index_range(page: int, page_size: int) -> tuple:
     """Returns start and end index ie pagination parameters"""
     start_index = (page - 1) * page_size
@@ -32,18 +33,15 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """Get Data in pages"""
-            assert isinstance(page,int) and page > 0 
-            assert isinstance(page_size,int) and page_size > 0
+        """Get Data in pages"""
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
-            indexes = index_range(page, page_size)
-            
-            dataset = self.dataset()
-            try:
-                accPage = dataset[indexes[0]:indexes[1]]
-            except:
-                return []
-            return accPage
-
-
-
+        indexes = index_range(page, page_size)
+        dataset = self.dataset()
+        try:
+            dataset[indexes[1]]
+            accPage = dataset[indexes[0]:indexes[1]]
+        except IndexError:
+            return []
+        return accPage
