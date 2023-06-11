@@ -7,9 +7,12 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route("/")
 def index():
     """
-    Index function to render html page
+    Handle the index route
     """
     return render_template("0-index.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
