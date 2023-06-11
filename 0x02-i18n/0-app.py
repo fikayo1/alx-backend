@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 Basic flask app
 """
@@ -9,4 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """
+    Index function to render html page
+    """
     return render_template("0-index.html")
